@@ -7,6 +7,7 @@ int main(){
     int total;
     cin >> total;
 
+    //fills array with input values
     vector<int> arr(total);
     for(int i = 0; i < total; i++){
         cin >> arr[i];
@@ -14,6 +15,7 @@ int main(){
 
     quickSort(arr, 0, total - 1);
 
+    //prints sorted array
     cout << "Total: "<< total << endl;
     for(int i = 0; i < total; i++){
         cout << arr[i] << endl;
