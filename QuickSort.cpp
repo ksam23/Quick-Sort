@@ -3,18 +3,21 @@
 #include <random>
 using namespace std;
 
-void quickSort(vector<int> arr, int low, int high) {
+void quickSort(vector<int>& arr, int low, int high) {
 	if(low < high){
         int q = hoare_partition(arr, low, high);
         //sort lower half , since hoare partiton no need for q - 1
-        quickSort(arr, low, q);
+        if(q > low)quickSort(arr, low, q);
         //sort upper half
-        quickSort(arr, q + 1, high);
+        if (q + 1 < high)quickSort(arr, q + 1, high);
     }
 }
 
-int hoare_partition(vector<int> arr, int low, int high){
-    int key = arr[low + (rand() % (high - low + 1))];
+int hoare_partition(vector<int>& arr, int low, int high){
+    int random = low + (rand() % (high - low + 1));
+    swapNums(arr, low, random);
+
+    int key = arr[low];
     int i = low - 1;
     int j = high + 1;
     while(true){
@@ -30,8 +33,9 @@ int hoare_partition(vector<int> arr, int low, int high){
         }
         while(arr[i] < key);
 
+        //swaps number bigger than key with number smaller than key to correct side
         if( i < j){
-            swap(arr, arr[i], arr[j]);
+            swapNums(arr, i, j);
         }
         else {
             return j;
@@ -40,7 +44,7 @@ int hoare_partition(vector<int> arr, int low, int high){
 }
 
 
-void swap(vector<int>& arr, int i, int j){
+void swapNums(vector<int>& arr, int i, int j){
     int temp = arr[i];
     arr[i] = arr[j];
     arr[j] = temp;

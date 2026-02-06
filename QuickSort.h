@@ -4,8 +4,8 @@
 #include <vector>
 using namespace std;
 
-void quickSort(vector<int> arr, int low, int high);
-int hoare_partition(vector<int> arr, int low, int high);
-void swap(vector<int>& arr, int i, int j);
+void quickSort(vector<int>& arr, int low, int high);
+int hoare_partition(vector<int>& arr, int low, int high);
+void swapNums(vector<int>& arr, int i, int j);
 
 #endif
