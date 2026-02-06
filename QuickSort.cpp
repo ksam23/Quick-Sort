@@ -6,14 +6,19 @@ using namespace std;
 void quickSort(vector<int>& arr, int low, int high) {
 	if(low < high){
         int q = hoare_partition(arr, low, high);
-        //sort lower half , since hoare partiton no need for q - 1
-        if(q > low)quickSort(arr, low, q);
-        //sort upper half
-        if (q + 1 < high)quickSort(arr, q + 1, high);
+        //sort lower half, checks for array of size 0 or 1
+        if(q > low){ 
+            quickSort(arr, low, q);
+        }
+        //sort upper half, checks for array of size 0 or 1
+        if (q + 1 < high){
+            quickSort(arr, q + 1, high);
+        }
     }
 }
 
 int hoare_partition(vector<int>& arr, int low, int high){
+    //randomize pivot but put in spot of low for hoare
     int random = low + (rand() % (high - low + 1));
     swapNums(arr, low, random);
 

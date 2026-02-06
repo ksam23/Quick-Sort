@@ -5,7 +5,8 @@
 using namespace std;
 
 int main(){
-   // srand(time(0));
+    //make random nmbers different each time based on current seconds
+    srand(time(0));
 
     int total;
     cin >> total;
